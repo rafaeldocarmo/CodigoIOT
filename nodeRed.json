@@ -1,0 +1,307 @@
+[
+    {
+        "id": "924e08c543ba6dcd",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dc8861d96afb6021",
+        "type": "mqtt in",
+        "z": "924e08c543ba6dcd",
+        "name": "",
+        "topic": "grupo06-iotmack/Temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b205a8110c346657",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "ecf749220e8b9ba4",
+                "468dc1156d9bc7a6"
+            ]
+        ]
+    },
+    {
+        "id": "ecf749220e8b9ba4",
+        "type": "influxdb out",
+        "z": "924e08c543ba6dcd",
+        "influxdb": "6f847bd86e062469",
+        "name": "",
+        "measurement": "Temperatura",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "objs_ir",
+        "x": 700,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "18174955813d093a",
+        "type": "mqtt in",
+        "z": "924e08c543ba6dcd",
+        "name": "",
+        "topic": "grupo06-iotmack/Umidade",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b205a8110c346657",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "ce4ae05e7f3dd93d",
+                "468dc1156d9bc7a6"
+            ]
+        ]
+    },
+    {
+        "id": "ce4ae05e7f3dd93d",
+        "type": "influxdb out",
+        "z": "924e08c543ba6dcd",
+        "influxdb": "6f847bd86e062469",
+        "name": "",
+        "measurement": "Umidade",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "objs_ir",
+        "x": 690,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7d7d1f4b442fb737",
+        "type": "mqtt in",
+        "z": "924e08c543ba6dcd",
+        "name": "",
+        "topic": "grupo06-iotmack/Volume",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b205a8110c346657",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 390,
+        "y": 600,
+        "wires": [
+            [
+                "435b2199d51c3c29",
+                "468dc1156d9bc7a6"
+            ]
+        ]
+    },
+    {
+        "id": "435b2199d51c3c29",
+        "type": "influxdb out",
+        "z": "924e08c543ba6dcd",
+        "influxdb": "6f847bd86e062469",
+        "name": "",
+        "measurement": "Volume",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "objs_ir",
+        "x": 680,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1b82046e82ecbfa7",
+        "type": "mqtt in",
+        "z": "924e08c543ba6dcd",
+        "name": "",
+        "topic": "grupo06-iotmack/Fan",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b205a8110c346657",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 380,
+        "y": 720,
+        "wires": [
+            [
+                "c66b4ad1bc3500e0",
+                "468dc1156d9bc7a6"
+            ]
+        ]
+    },
+    {
+        "id": "c66b4ad1bc3500e0",
+        "type": "influxdb out",
+        "z": "924e08c543ba6dcd",
+        "influxdb": "6f847bd86e062469",
+        "name": "",
+        "measurement": "Fan",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "objs_ir",
+        "x": 670,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "468dc1156d9bc7a6",
+        "type": "join",
+        "z": "924e08c543ba6dcd",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "4",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 630,
+        "y": 520,
+        "wires": [
+            [
+                "9f03c370e26b274d"
+            ]
+        ]
+    },
+    {
+        "id": "9f03c370e26b274d",
+        "type": "function",
+        "z": "924e08c543ba6dcd",
+        "name": "function 2",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb9befe77824e049",
+        "type": "function",
+        "z": "924e08c543ba6dcd",
+        "name": "function 3",
+        "func": "var mensagem1 = msg.payload[0];\nvar mensagem2 = msg.payload[1];\nvar mensagem3 = msg.payload[2];\nvar mensagem4 = msg.payload[3];\n\nmsg.payload = \"Temperatura: \" + mensagem1 +\n \"/ Umidade: \" + mensagem2+\n \"/ Volume: \"+ mensagem3+\n \"/ Exaustor: \" +mensagem4;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 520,
+        "wires": [
+            [
+                "203a80426c684490"
+            ]
+        ]
+    },
+    {
+        "id": "203a80426c684490",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "924e08c543ba6dcd",
+        "name": "",
+        "credtype": "account",
+        "account": "9fe08e371799cbdf",
+        "text": "payload",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 1010,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b205a8110c346657",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "grupo6macknode",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "6f847bd86e062469",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "Grupo7",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "9fe08e371799cbdf",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": ""
+    }
+]
